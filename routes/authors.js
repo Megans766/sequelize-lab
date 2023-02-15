@@ -7,4 +7,6 @@ router.get('/', authorsCtrl.index)
 router.put('/:id', authorsCtrl.update)
 router.delete('/:id', authorsCtrl.delete)
 
+router.post('/:id/series', authorsCtrl.addSeries)
+
 module.exports = router

@@ -1,4 +1,4 @@
-const { Author } = require('../models')
+const { Author, Series } = require('../models')
 
 const create = async (req, res) => {
   try {
@@ -39,9 +39,20 @@ const deleteAuthor = async (req, res) => {
   }
 }
 
+const addSeries = async (req, res) => {
+  try {
+    req.body.auhtorId = req.params.id
+    const series = await Series.create(req.body)
+    res.status(200).json(series)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 module.exports = {
   create,
   index,
   update,
-  delete: deleteAuthor
+  delete: deleteAuthor,
+  addSeries
 }
