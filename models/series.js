@@ -5,7 +5,9 @@ module.exports = (sequelize, DataTypes) => {
   class Series extends Model {
 
     static associate(models) {
-  
+      Series.belongsTo(models.Author, {
+        foreignKey: 'authorId'
+      })
     }
   }
   Series.init({
