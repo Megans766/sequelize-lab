@@ -11,7 +11,9 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   try {
-    const authors = await Author.findAll()
+    const authors = await Author.findAll({
+      include: [{ model: Series, as: 'series' }]
+    })
     res.status(200).json(authors)
   } catch (error) {
     res.status(500).json(error)
