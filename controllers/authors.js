@@ -18,7 +18,19 @@ const index = async (req, res) => {
   }
 }
 
+const update = async (req, res) => {
+  try {
+    const author = await Author.findByPk(req.params.id)
+    author.set(req.body)
+    await author.save()
+    res.status(200).json(author)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 module.exports = {
   create,
   index,
+  update,
 }
