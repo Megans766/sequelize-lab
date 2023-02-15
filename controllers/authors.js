@@ -41,10 +41,11 @@ const deleteAuthor = async (req, res) => {
 
 const addSeries = async (req, res) => {
   try {
-    req.body.auhtorId = req.params.id
+    req.body.authorId = req.params.id
     const series = await Series.create(req.body)
     res.status(200).json(series)
   } catch (error) {
+    console.log(error);
     res.status(500).json(error)
   }
 }
