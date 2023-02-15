@@ -31,10 +31,9 @@ const update = async (req, res) => {
 
 const deleteAuthor = async (req, res) => {
   try {
-    const numberOfRowsRemoved = await Author.destroy(
-      { where: { id: req.params.id } }
-    )
-    res.status(200).json(numberOfRowsRemoved)
+    const author = await Author.findByPk(req.params.id)
+    await author.destroy()
+    res.status(200).json(author)
   } catch (error) {
     res.status(500).json(error)
   }
