@@ -29,8 +29,20 @@ const update = async (req, res) => {
   }
 }
 
+const deleteAuthor = async (req, res) => {
+  try {
+    const numberOfRowsRemoved = await Author.destroy(
+      { where: { id: req.params.id } }
+    )
+    res.status(200).json(numberOfRowsRemoved)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 module.exports = {
   create,
   index,
   update,
+  delete: deleteAuthor
 }

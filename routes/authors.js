@@ -5,5 +5,6 @@ const authorsCtrl = require('../controllers/authors.js')
 router.post('/', authorsCtrl.create)
 router.get('/', authorsCtrl.index)
 router.put('/:id', authorsCtrl.update)
+router.delete('/:id', authorsCtrl.delete)
 
 module.exports = router
