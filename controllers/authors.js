@@ -9,7 +9,16 @@ const create = async (req, res) => {
   }
 }
 
+const index = async (req, res) => {
+  try {
+    const authors = await Author.findAll()
+    res.status(200).json(authors)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
 
 module.exports = {
   create,
+  index,
 }
